@@ -43,10 +43,10 @@ public class Bones {
 		item = null;
 		switch (Random.Int( 4 )) {
 		case 0:
-			item = Dungeon.hero.belongings.weapon;
+			item = Dungeon.hero.belongings.ring1;
 			break;
 		case 1:
-			item = Dungeon.hero.belongings.armor;
+			item = Dungeon.hero.belongings.ring1;
 			break;
 		case 2:
 			item = Dungeon.hero.belongings.ring1;
@@ -101,14 +101,14 @@ public class Bones {
 				depth = 0;
 				
 				if (!item.stackable) {
-					item.cursed = true;
+					item.cursed = false;
 					item.cursedKnown = true;
 					if (item.isUpgradable()) {
 						int lvl = (Dungeon.depth - 1) * 3 / 5 + 1;
 						if (lvl < item.level()) {
 							item.degrade( item.level() - lvl );
 						}
-						item.levelKnown = false;
+						item.levelKnown = true;
 					}
 				}
 				
