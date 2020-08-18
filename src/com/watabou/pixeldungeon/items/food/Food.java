@@ -66,15 +66,20 @@ public class Food extends Item {
 			switch (hero.heroClass) {
 			case WARRIOR:
 				if (hero.HP < hero.HT) {
-					hero.HP = Math.min( hero.HP + 5, hero.HT );
+					hero.HP = Math.min( hero.HP + 20, hero.HT );
 					hero.sprite.emitter().burst( Speck.factory( Speck.HEALING ), 1 );
 				}
 				break;
 			case MAGE:
-				hero.belongings.charge( false );
+				hero.belongings.charge( true );
 				ScrollOfRecharging.charge( hero );
 				break;
 			case ROGUE:
+				if (hero.HP < hero.HT) {
+					hero.HP = Math.min( hero.HP + 20, hero.HT );
+					hero.sprite.emitter().burst( Speck.factory( Speck.HEALING ), 1 );
+				}
+				break;
 			case HUNTRESS:
 				break;
 			}
